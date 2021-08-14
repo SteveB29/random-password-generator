@@ -5,3 +5,4 @@
 
 ## Links
 [GitHub repository](https://github.com/SteveB29/random-password-generator)
+[Deployed page](https://steveb29.github.io/random-password-generator/)
