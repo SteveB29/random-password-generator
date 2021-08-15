@@ -26,6 +26,9 @@ var propmts = function () {
   while (!passwordLength || passwordLength < 8 || passwordLength > 128) {
     passwordLength = window.prompt('How long do you want the password (please enter 8-128)');
     passwordLength = parseInt(passwordLength);
+    if (!passwordLength || passwordLength < 8 || passwordLength > 128) {
+      window.alert("Please enter a valid length");
+    }
   }
   while (!passwordWordPool) {
     var includeUpper = window.confirm('Do you want to include upper case letters in the password? (Confirm for yes, cancel for no)');
@@ -48,6 +51,9 @@ var propmts = function () {
       passwordWordPool = passwordWordPool.concat(symbols);
     }
     console.log(passwordWordPool);
+    if (!passwordWordPool) {
+      window.alert("Please select at least one criteria for the password");
+    }
   }
 }
 
