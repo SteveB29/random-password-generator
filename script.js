@@ -5,7 +5,7 @@ var lowerCase = 'abcdefghijklmnopqrstuvwxyz';
 var numbers = '0123456789';
 var symbols = '!#$%&*+/:;<=>?@^';
 var passwordLength = 0;
-var passwordWordPool = "";
+var passwordWordPool = '';
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -20,6 +20,7 @@ function writePassword() {
 
   // resets passwordLength so new password can be generated
   passwordLength = 0;
+  passwordWordPool = '';
 }
 
 var propmts = function () {
@@ -58,7 +59,12 @@ var propmts = function () {
 }
 
 var generatePassword = function() {
-  password = "Test##45^7";
+  password = '';
+  for (i =0; i < passwordLength; i++) {
+    var rand = Math.floor(Math.random() * passwordWordPool.length);
+    var nextRand = passwordWordPool.charAt(rand);
+    password = password.concat(nextRand);
+  }
   return password;
 }
 
