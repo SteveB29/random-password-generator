@@ -17,6 +17,8 @@ function writePassword() {
 
   passwordText.value = password;
 
+  // resets passwordLength so new password can be generated
+  passwordLength = 0;
 }
 
 var propmts = function () {
@@ -28,6 +30,11 @@ var propmts = function () {
   var includeLower = window.confirm('Do you want to include lower case letters in the password? (Confirm for yes, cancel for no)');
   var includeNumbers = window.confirm('Do you want to include numbers in the password? (Confirm for yes, cancel for no)');
   var includeSymbols = window.confirm('Do you wnat to include symbols in the password? (Confirm for yes, cancel for no)');
+}
+
+var generatePassword = function() {
+  password = "Test##45^7";
+  return password;
 }
 
 // Add event listener to generate button
