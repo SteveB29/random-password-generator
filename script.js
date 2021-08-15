@@ -2,9 +2,10 @@
 
 var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var lowerCase = 'abcdefghijklmnopqrstuvwxyz';
-var numb = '0123456789';
-var symbol = '!#$%&*+/:;<=>?@^';
+var numbers = '0123456789';
+var symbols = '!#$%&*+/:;<=>?@^';
 var passwordLength = 0;
+var passwordWordPool = "";
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -26,10 +27,28 @@ var propmts = function () {
     passwordLength = window.prompt('How long do you want the password (please enter 8-128)');
     passwordLength = parseInt(passwordLength);
   }
-  var includeUpper = window.confirm('Do you want to include upper case letters in the password? (Confirm for yes, cancel for no)');
-  var includeLower = window.confirm('Do you want to include lower case letters in the password? (Confirm for yes, cancel for no)');
-  var includeNumbers = window.confirm('Do you want to include numbers in the password? (Confirm for yes, cancel for no)');
-  var includeSymbols = window.confirm('Do you wnat to include symbols in the password? (Confirm for yes, cancel for no)');
+  while (!passwordWordPool) {
+    var includeUpper = window.confirm('Do you want to include upper case letters in the password? (Confirm for yes, cancel for no)');
+    if (includeUpper) {
+      passwordWordPool = passwordWordPool.concat(upperCase);
+    }
+    console.log(passwordWordPool);
+    var includeLower = window.confirm('Do you want to include lower case letters in the password? (Confirm for yes, cancel for no)');
+    if (includeLower) {
+      passwordWordPool = passwordWordPool.concat(lowerCase);
+    }
+    console.log(passwordWordPool);
+    var includeNumbers = window.confirm('Do you want to include numbers in the password? (Confirm for yes, cancel for no)');
+    if (includeNumbers) {
+      passwordWordPool = passwordWordPool.concat(numbers);
+    }
+    console.log(passwordWordPool);
+    var includeSymbols = window.confirm('Do you wnat to include symbols in the password? (Confirm for yes, cancel for no)');
+    if (includeSymbols) {
+      passwordWordPool = passwordWordPool.concat(symbols);
+    }
+    console.log(passwordWordPool);
+  }
 }
 
 var generatePassword = function() {
