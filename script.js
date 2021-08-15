@@ -5,7 +5,7 @@ var lowerCase = 'abcdefghijklmnopqrstuvwxyz';
 var numbers = '0123456789';
 var symbols = '!#$%&*+/:;<=>?@^';
 var passwordLength = 0;
-var passwordWordPool = '';
+var passwordPool = '';
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -18,51 +18,57 @@ function writePassword() {
 
   passwordText.value = password;
 
-  // resets passwordLength so new password can be generated
+  // resets passwordLength and passWordPool so new password and criteria can be generated
   passwordLength = 0;
-  passwordWordPool = '';
+  passwordPool = '';
 }
 
 var propmts = function () {
+  
+  // Asks for a password length and loops if incorrect criteria is entered
   while (!passwordLength || passwordLength < 8 || passwordLength > 128) {
     passwordLength = window.prompt('How long do you want the password (please enter 8-128)');
     passwordLength = parseInt(passwordLength);
+
     if (!passwordLength || passwordLength < 8 || passwordLength > 128) {
       window.alert("Please enter a valid length");
     }
   }
-  while (!passwordWordPool) {
+  
+  // Asks what should be included in the password and loops if none are selected
+  while (!passwordPool) {
     var includeUpper = window.confirm('Do you want to include upper case letters in the password? (Confirm for yes, cancel for no)');
     if (includeUpper) {
-      passwordWordPool = passwordWordPool.concat(upperCase);
+      passwordPool = passwordPool.concat(upperCase);
     }
-    console.log(passwordWordPool);
+
     var includeLower = window.confirm('Do you want to include lower case letters in the password? (Confirm for yes, cancel for no)');
     if (includeLower) {
-      passwordWordPool = passwordWordPool.concat(lowerCase);
+      passwordPool = passwordPool.concat(lowerCase);
     }
-    console.log(passwordWordPool);
+
     var includeNumbers = window.confirm('Do you want to include numbers in the password? (Confirm for yes, cancel for no)');
     if (includeNumbers) {
-      passwordWordPool = passwordWordPool.concat(numbers);
+      passwordPool = passwordPool.concat(numbers);
     }
-    console.log(passwordWordPool);
+
     var includeSymbols = window.confirm('Do you wnat to include symbols in the password? (Confirm for yes, cancel for no)');
     if (includeSymbols) {
-      passwordWordPool = passwordWordPool.concat(symbols);
+      passwordPool = passwordPool.concat(symbols);
     }
-    console.log(passwordWordPool);
-    if (!passwordWordPool) {
+
+    if (!passwordPool) {
       window.alert("Please select at least one criteria for the password");
     }
   }
 }
 
 var generatePassword = function() {
-  password = '';
-  for (i =0; i < passwordLength; i++) {
-    var rand = Math.floor(Math.random() * passwordWordPool.length);
-    var nextRand = passwordWordPool.charAt(rand);
+  var password = '';
+  // loops for length entered by user and concatenates random passwordPool to password var
+  for (i = 0; i < passwordLength; i++) {
+    var rand = Math.floor(Math.random() * passwordPool.length);
+    var nextRand = passwordPool.charAt(rand);
     password = password.concat(nextRand);
   }
   return password;
