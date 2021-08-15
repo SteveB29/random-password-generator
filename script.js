@@ -4,6 +4,7 @@ var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var lowerCase = 'abcdefghijklmnopqrstuvwxyz';
 var numb = '0123456789';
 var symbol = '!#$%&*+/:;<=>?@^';
+var passwordLength = 0;
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -19,7 +20,10 @@ function writePassword() {
 }
 
 var propmts = function () {
-  passwordLength = window.prompt('How long do you want the password (please enter 8-128)');
+  while (!passwordLength || passwordLength < 8 || passwordLength > 128) {
+    passwordLength = window.prompt('How long do you want the password (please enter 8-128)');
+    passwordLength = parseInt(passwordLength);
+  }
   var includeUpper = window.confirm('Do you want to include upper case letters in the password? (Confirm for yes, cancel for no)');
   var includeLower = window.confirm('Do you want to include lower case letters in the password? (Confirm for yes, cancel for no)');
   var includeNumbers = window.confirm('Do you want to include numbers in the password? (Confirm for yes, cancel for no)');
