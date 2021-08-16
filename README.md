@@ -4,5 +4,5 @@
 - Password will then be displayed on the page
 
 ## Links
-[GitHub repository](https://github.com/SteveB29/random-password-generator)
-[Deployed page](https://steveb29.github.io/random-password-generator/)
+- [GitHub repository](https://github.com/SteveB29/random-password-generator)
+- [Deployed page](https://steveb29.github.io/random-password-generator/)
