@@ -27,11 +27,11 @@ var propmts = function () {
   
   // Asks for a password length and loops if incorrect criteria is entered
   while (!passwordLength || passwordLength < 8 || passwordLength > 128) {
-    passwordLength = window.prompt('How long do you want the password (please enter 8-128)');
+    passwordLength = window.prompt('How long do you want your password to be? (please enter 8-128)');
     passwordLength = parseInt(passwordLength);
 
     if (!passwordLength || passwordLength < 8 || passwordLength > 128) {
-      window.alert("Please enter a valid length");
+      window.alert("Please enter a number between 8 and 128");
     }
   }
   
@@ -71,6 +71,7 @@ var generatePassword = function() {
     var nextRand = passwordPool.charAt(rand);
     password = password.concat(nextRand);
   }
+  window.alert("Your password is!: " + password);
   return password;
 }
 
